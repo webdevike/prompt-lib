@@ -120,8 +120,9 @@ export async function POST(request: Request) {
         sendReasoning: true,
       });
     },
-    onError: () => {
-      return 'Oops, an error occured!';
+    onError: (error) => {
+      console.error('Error in streamText', error);
+      return `Oops, an error occured! ${error}`;
     },
   });
 }

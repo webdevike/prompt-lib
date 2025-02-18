@@ -14,7 +14,6 @@ const openRouter = createOpenRouter({
 });
 
 
-
 export const myProvider = customProvider({
   languageModels: {
     'chat-model-small': openai('gpt-4o-mini'),
@@ -40,21 +39,21 @@ interface ChatModel {
 }
 
 export const chatModels: Array<ChatModel> = [
-  // {
-  //   id: 'chat-model-small',
-  //   name: 'Small model',
-  //   description: 'Small model for fast, lightweight tasks',
-  // },
-  // {
-  //   id: 'chat-model-large',
-  //   name: 'Large model',
-  //   description: 'Large model for complex, multi-step tasks',
-  // },
-  // {
-  //   id: 'chat-model-reasoning',
-  //   name: 'Reasoning model',
-  //   description: 'Uses advanced reasoning',
-  // },
+  {
+    id: 'chat-model-small',
+    name: 'Small model',
+    description: 'Small model for fast, lightweight tasks',
+  },
+  {
+    id: 'chat-model-large',
+    name: 'Large model',
+    description: 'Large model for complex, multi-step tasks',
+  },
+  {
+    id: 'chat-model-reasoning',
+    name: 'Reasoning model',
+    description: 'Uses advanced reasoning',
+  },
   {
     id: 'dolphin-model',
     name: 'Dolphin model',

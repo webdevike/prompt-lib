@@ -17,6 +17,18 @@ export const user = pgTable('User', {
   password: varchar('password', { length: 64 }),
 });
 
+export const userPrompt = pgTable('UserPrompt', {
+  id: uuid('id').primaryKey().notNull().defaultRandom(),
+  userId: uuid('userId')
+    .notNull()
+    .references(() => user.id),
+  promptId: uuid('promptId')
+    .notNull()
+    .references(() => prompt.id),
+  createdAt: timestamp('createdAt').notNull(),
+});
+
+export type UserPrompt = InferSelectModel<typeof userPrompt>;
 export type User = InferSelectModel<typeof user>;
 
 export const chat = pgTable('Chat', {
@@ -86,6 +98,17 @@ export const document = pgTable(
   },
 );
 
+export const prompt = pgTable('Prompt', {
+  id: uuid('id').notNull().defaultRandom(),
+  name: text('name').notNull(),
+  description: text('description'),
+  userId: uuid('userId')
+    .notNull()
+    .references(() => user.id),
+  createdAt: timestamp('createdAt').notNull(),
+});
+
+export type Prompt = InferSelectModel<typeof prompt>;
 export type Document = InferSelectModel<typeof document>;
 
 export const suggestion = pgTable(
